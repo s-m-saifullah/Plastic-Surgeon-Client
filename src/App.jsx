@@ -3,7 +3,7 @@ import router from "./routers/router";
 
 function App() {
   return (
-    <div>
+    <div className="w-11/12 lg:w-10/12 mx-auto">
       <RouterProvider router={router}></RouterProvider>
     </div>
   );
