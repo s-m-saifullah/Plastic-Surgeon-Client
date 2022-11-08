@@ -120,7 +120,7 @@ const Header = () => {
                     <button onClick={handleLogout}>Logout</button>
                   </li>
                 </ul>
-              </div>{" "}
+              </div>
             </>
           ) : (
             <>

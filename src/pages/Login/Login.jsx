@@ -1,18 +1,46 @@
-import React from "react";
+import React, { useContext } from "react";
+import toast from "react-hot-toast";
 import { FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import login from "../../assets/images/login.jpg";
+import loginImg from "../../assets/images/login.jpg";
+import { AuthContext } from "../../contexts/AuthProvider";
 
 const Login = () => {
+  const { login, googleSignIn } = useContext(AuthContext);
+
+  const handleSignIn = (e) => {
+    e.preventDefault();
+    const form = e.target;
+
+    const email = form.email.value;
+    const password = form.password.value;
+
+    // Login with credentials
+    login(email, password)
+      .then(() => {
+        toast.success("Log In Successful.");
+      })
+      .catch((err) => console.log(err));
+  };
+
+  //   Login with google
+  const handleGoogleSignIn = () => {
+    googleSignIn()
+      .then(() => {
+        toast.success("Log In Successful.");
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <section className="mt-10">
       <div className="container px-6 py-12 h-full">
         <div className="flex justify-center items-center flex-wrap h-full gap-6 text-gray-800">
           <div className="md:w-8/12 lg:w-6/12 mb-12 md:mb-0">
-            <img src={login} className="w-full" alt="Phone image" />
+            <img src={loginImg} className="w-full" alt="" />
           </div>
           <div className="md:w-8/12 lg:w-5/12 lg:ml-20">
-            <form>
+            <form onSubmit={handleSignIn}>
               {/* <!-- Email input --> */}
               <div className="mb-6">
                 <input
@@ -57,8 +85,8 @@ const Login = () => {
               </div>
 
               <button
+                onClick={handleGoogleSignIn}
                 className="px-7 py-3 text-white font-medium text-sm leading-snug bg-blue-600 uppercase rounded shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full flex justify-center items-center mb-3"
-                href="#!"
                 role="button"
               >
                 <FaGoogle className="mr-3" />
