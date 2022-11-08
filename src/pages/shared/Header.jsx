@@ -1,12 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/images/Elizabeth Mcconnell.png";
+import { AuthContext } from "../../contexts/AuthProvider";
 
 const Header = () => {
+  const { user, logout } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    logout()
+      .then(() => {
+        toast.success("You are logged out");
+      })
+      .catch((err) => console.log(err));
+  };
+
+  console.log(user);
   return (
     <div>
       <div className="navbar bg-base-100 my-5">
-        <div className="navbar-start">
+        <div className="navbar-start w-4/5 md:w-1/2">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
               <svg
@@ -29,14 +42,35 @@ const Header = () => {
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 "
             >
               <li>
-                <Link to="/add-service">Add Service</Link>
+                <Link to="/">Home</Link>
               </li>
-              <li tabIndex={0}>
-                <Link className="justify-between">Parent</Link>
-              </li>
+              {user?.uid && (
+                <>
+                  <li>
+                    <Link to="/add-service">Add Service</Link>
+                  </li>
+                  <li tabIndex={0}>
+                    <Link>My Reviews</Link>
+                  </li>
+                </>
+              )}
               <li>
-                <Link>Item 3</Link>
+                <Link>Blog</Link>
               </li>
+              {user?.uid || (
+                <>
+                  <li>
+                    <Link to="/login" className="">
+                      Login
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/signup" className="">
+                      Sign Up
+                    </Link>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
           <Link to="/">
@@ -46,24 +80,58 @@ const Header = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0">
             <li>
-              <Link to="/add-service">Add Service</Link>
+              <Link to="/">Home</Link>
             </li>
-            <li tabIndex={0}>
-              <Link>Parent</Link>
-            </li>
+            {user?.uid && (
+              <>
+                <li>
+                  <Link to="/add-service">Add Service</Link>
+                </li>
+                <li tabIndex={0}>
+                  <Link>My Reviews</Link>
+                </li>
+              </>
+            )}
             <li>
-              <Link>Item 3</Link>
+              <Link>Blog</Link>
             </li>
           </ul>
         </div>
         <div className="navbar-end">
-          <Link to="/login" className="btn mr-2">
-            Login
-          </Link>
-          <button className="btn mr-2">Logout</button>
-          <Link to="/signup" className="btn">
-            Sign Up
-          </Link>
+          {user?.uid ? (
+            <>
+              <div className="dropdown dropdown-end">
+                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                  <div className="w-10 rounded-full">
+                    <img src={user?.photoURL} />
+                  </div>
+                </label>
+                <ul
+                  tabIndex={0}
+                  className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+                >
+                  <li>
+                    <a className="justify-between">Profile</a>
+                  </li>
+                  <li>
+                    <a>Settings</a>
+                  </li>
+                  <li>
+                    <button onClick={handleLogout}>Logout</button>
+                  </li>
+                </ul>
+              </div>{" "}
+            </>
+          ) : (
+            <>
+              <Link to="/login" className="btn mr-2 hidden md:flex">
+                Login
+              </Link>
+              <Link to="/signup" className="btn hidden md:flex">
+                Sign Up
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </div>

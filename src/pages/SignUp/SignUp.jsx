@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import toast from "react-hot-toast";
 import { FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import signup from "../../assets/images/signup.jpg";
@@ -45,7 +46,7 @@ const SignUp = () => {
   return (
     <section className="mt-10">
       <div className="container px-6 py-12 h-full">
-        <div className="flex justify-center items-center flex-wrap h-full gap-6 text-gray-800">
+        <div className="flex flex-col-reverse lg:flex-row justify-center items-center flex-wrap h-full gap-6 text-gray-800">
           <div className="md:w-8/12 lg:w-5/12 lg:mr-20 mb-12 md:mb-0">
             <form onSubmit={handleSignUp}>
               {/* <!-- Name input --> */}
