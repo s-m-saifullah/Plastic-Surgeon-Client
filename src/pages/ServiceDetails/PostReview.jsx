@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
+import toast from "react-hot-toast";
 import { AuthContext } from "../../contexts/AuthProvider";
 
-const PostReview = () => {
+const PostReview = ({ id }) => {
   const { user } = useContext(AuthContext);
 
   const handleReviewSubmit = (e) => {
