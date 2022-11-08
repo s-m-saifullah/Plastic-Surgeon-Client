@@ -13,7 +13,7 @@ const ServiceDetailsCard = ({ service }) => {
           alt=""
         />
         <div className="p-6 flex flex-col justify-start">
-          <h5 className="text-gray-900 text-6xl font-medium mb-2">{name}</h5>
+          <h5 className="text-gray-900 text-5xl font-medium mb-2">{name}</h5>
           <p className="text-gray-700 text-lg mb-4">{description}</p>
           <p className="text-primary mb-10">
             <span className="text-7xl">${price}</span>
