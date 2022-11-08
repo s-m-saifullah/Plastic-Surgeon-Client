@@ -1,5 +1,6 @@
 import React from "react";
 import { FaStar, FaRegStar } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const ServiceDetailsCard = ({ service }) => {
   const { _id, name, photoUrl, price, rating, description } = service;
@@ -29,6 +30,9 @@ const ServiceDetailsCard = ({ service }) => {
               ))}
             </span>
           </p>
+          <a href="#reviews" className="btn btn-primary w-40 mt-10">
+            Reviews
+          </a>
         </div>
       </div>
     </div>
