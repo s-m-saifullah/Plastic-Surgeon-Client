@@ -1,15 +1,53 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import signup from "../../assets/images/signup.jpg";
+import { AuthContext } from "../../contexts/AuthProvider";
 
 const SignUp = () => {
+  const { createUserWithEmail, profileUpdate, googleSignIn } =
+    useContext(AuthContext);
+
+  const handleSignUp = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const photoUrl = form.photoUrl.value;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    // Sign up with email password
+    createUserWithEmail(email, password)
+      .then(() => {
+        profileUpdate(name, photoUrl)
+          .then(() => {
+            toast.success("You're registered. Please RELOAD the page.", {
+              duration: 5000,
+            });
+          })
+          .catch((error) => console.log(error));
+      })
+      .catch((error) => console.log(error));
+  };
+
+  //   Sign up with google
+  const handleGoogleSignIn = () => {
+    googleSignIn()
+      .then((result) => {
+        const newUser = result.user;
+        setUser(newUser);
+        toast.success("You are signed in. YAY!");
+        navigate("/");
+      })
+      .catch((error) => console.log(error));
+  };
+
   return (
     <section className="mt-10">
       <div className="container px-6 py-12 h-full">
         <div className="flex justify-center items-center flex-wrap h-full gap-6 text-gray-800">
           <div className="md:w-8/12 lg:w-5/12 lg:mr-20 mb-12 md:mb-0">
-            <form>
+            <form onSubmit={handleSignUp}>
               {/* <!-- Name input --> */}
               <div className="mb-6">
                 <input
@@ -76,6 +114,7 @@ const SignUp = () => {
               </div>
 
               <button
+                onClick={handleGoogleSignIn}
                 className="px-7 py-3 text-white font-medium text-sm leading-snug bg-blue-600 uppercase rounded shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full flex justify-center items-center mb-3"
                 href="#!"
                 role="button"
