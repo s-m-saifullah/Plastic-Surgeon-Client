@@ -25,7 +25,7 @@ const Login = () => {
         };
 
         // Get JWT Token
-        fetch("http://localhost:5000/jwt", {
+        fetch("https://plastic-surgeon-server.vercel.app/jwt", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -52,7 +52,7 @@ const Login = () => {
         };
 
         // Get JWT Token
-        fetch("http://localhost:5000/jwt", {
+        fetch("https://plastic-surgeon-server.vercel.app/jwt", {
           method: "POST",
           headers: {
             "content-type": "application/json",

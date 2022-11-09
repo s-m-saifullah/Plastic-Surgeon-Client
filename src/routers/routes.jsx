@@ -29,13 +29,16 @@ const router = createBrowserRouter([
       {
         path: "/services",
         element: <Services />,
-        loader: () => fetch("http://localhost:5000/services"),
+        loader: () =>
+          fetch("https://plastic-surgeon-server.vercel.app/services"),
       },
       {
         path: "/service/:id",
         element: <ServiceDetails />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/service/${params.id}`),
+          fetch(
+            `https://plastic-surgeon-server.vercel.app/service/${params.id}`
+          ),
       },
       {
         path: "/add-service",
@@ -49,7 +52,9 @@ const router = createBrowserRouter([
         path: "/edit-review/:id",
         element: <EditReview />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/reviewById/${params.id}`),
+          fetch(
+            `https://plastic-surgeon-server.vercel.app/reviewById/${params.id}`
+          ),
       },
     ],
   },

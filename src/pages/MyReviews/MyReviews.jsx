@@ -9,11 +9,14 @@ const MyReviews = () => {
 
   useEffect(() => {
     if (user) {
-      fetch(`http://localhost:5000/reviewByUid/${user?.uid}`, {
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
-        },
-      })
+      fetch(
+        `https://plastic-surgeon-server.vercel.app/reviewByUid/${user?.uid}`,
+        {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
+          },
+        }
+      )
         .then((res) => {
           if (res.status === 401 || res.status === 403) {
             logout();

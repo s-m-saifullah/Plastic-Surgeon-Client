@@ -24,7 +24,7 @@ const AddServices = () => {
       description,
       time: new Date().getTime(),
     };
-    fetch("http://localhost:5000/services", {
+    fetch("https://plastic-surgeon-server.vercel.app/services", {
       method: "POST",
       headers: {
         "content-type": "application/json",

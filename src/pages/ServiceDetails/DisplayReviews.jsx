@@ -5,7 +5,7 @@ const DisplayReviews = ({ serviceId }) => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/review/${serviceId}`)
+    fetch(`https://plastic-surgeon-server.vercel.app/review/${serviceId}`)
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, []);

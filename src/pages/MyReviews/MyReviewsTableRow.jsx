@@ -9,7 +9,7 @@ const MyReviewsTableRow = ({ userReview, index }) => {
     const confirm = window.confirm("Do you want to delete the review.");
 
     if (confirm) {
-      fetch(`http://localhost:5000/review/${id}`, {
+      fetch(`https://plastic-surgeon-server.vercel.app/review/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())

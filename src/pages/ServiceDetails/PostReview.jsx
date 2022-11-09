@@ -27,7 +27,7 @@ const PostReview = ({ id, serviceName }) => {
       serviceName,
     };
 
-    fetch("http://localhost:5000/review", {
+    fetch("https://plastic-surgeon-server.vercel.app/review", {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -10,7 +10,7 @@ const EditReview = () => {
   const handleReviewUpdate = (e) => {
     e.preventDefault();
     const editedReview = { review: e.target.review.value };
-    fetch(`http://localhost:5000/reviewById/${_id}`, {
+    fetch(`https://plastic-surgeon-server.vercel.app/reviewById/${_id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
