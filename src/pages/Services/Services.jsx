@@ -5,7 +5,7 @@ import ServiceCard from "../shared/ServiceCard";
 const Services = () => {
   const services = useLoaderData();
   return (
-    <div>
+    <div className="w-11/12 lg:w-10/12 mx-auto">
       <h2 className="text-center text-3xl font-semibold mb-5">
         Services We Provide
       </h2>

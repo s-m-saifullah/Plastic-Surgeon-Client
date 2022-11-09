@@ -6,7 +6,7 @@ const ServiceDetailsCard = ({ service }) => {
   const { _id, name, photoUrl, price, rating, description } = service;
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center w-11/12 lg:w-10/12 mx-auto">
       <div className="flex flex-col md:flex-row rounded-lg bg-white shadow-lg">
         <img
           className=" w-full h-96 md:h-auto object-cover rounded-t-lg md:rounded-none md:rounded-l-lg"

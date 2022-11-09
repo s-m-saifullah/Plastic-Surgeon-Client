@@ -31,8 +31,8 @@ const MyReviews = () => {
   }, [user, reviews]);
 
   return (
-    <div>
-      <h2 className="text-center text-3xl font-semibold mb-5">
+    <div className="w-11/12 lg:w-10/12 mx-auto mb-10">
+      <h2 className="text-center text-4xl font-semibold mb-5">
         My Reviews {reviews.length}
       </h2>
       <div className="table w-full p-2">

@@ -28,7 +28,10 @@ const EditReview = () => {
   };
 
   return (
-    <form onSubmit={handleReviewUpdate}>
+    <form
+      onSubmit={handleReviewUpdate}
+      className="w-11/12 lg:w-10/12 mx-auto px-80 mb-10"
+    >
       <div>
         <textarea
           type="text"

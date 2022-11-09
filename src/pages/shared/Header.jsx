@@ -18,7 +18,7 @@ const Header = () => {
   console.log(user);
   return (
     <div>
-      <div className="navbar bg-base-100 my-5">
+      <div className="navbar bg-base-100 my-5 w-11/12 lg:w-10/12 mx-auto">
         <div className="navbar-start w-4/5 md:w-1/2">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
