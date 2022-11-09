@@ -8,6 +8,7 @@ import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
 import MyReviews from "../pages/MyReviews/MyReviews";
 import EditReview from "../pages/MyReviews/EditReview";
+import PrivateRoute from "./PrivateRouter";
 
 const router = createBrowserRouter([
   {
@@ -42,15 +43,27 @@ const router = createBrowserRouter([
       },
       {
         path: "/add-service",
-        element: <AddServices />,
+        element: (
+          <PrivateRoute>
+            <AddServices />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/my-reviews",
-        element: <MyReviews />,
+        element: (
+          <PrivateRoute>
+            <MyReviews />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/edit-review/:id",
-        element: <EditReview />,
+        element: (
+          <PrivateRoute>
+            <EditReview />
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(
             `https://plastic-surgeon-server.vercel.app/reviewById/${params.id}`

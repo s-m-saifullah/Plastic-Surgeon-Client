@@ -4,7 +4,7 @@ import Spinner from "../shared/Spinner";
 import MyReviewsTableRow from "./MyReviewsTableRow";
 
 const MyReviews = () => {
-  const { user, logout } = useContext(AuthContext);
+  const { user, logout, setLoading } = useContext(AuthContext);
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
@@ -23,7 +23,10 @@ const MyReviews = () => {
           }
           return res.json();
         })
-        .then((data) => setReviews(data));
+        .then((data) => {
+          setReviews(data);
+          setLoading(false);
+        });
     }
   }, [user, reviews]);
 

@@ -1,12 +1,16 @@
 import React, { useContext } from "react";
 import toast from "react-hot-toast";
 import { FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import loginImg from "../../assets/images/login.jpg";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const Login = () => {
   const { login, googleSignIn } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+  console.log(from);
 
   const handleSignIn = (e) => {
     e.preventDefault();
@@ -37,6 +41,7 @@ const Login = () => {
             console.log(data);
             localStorage.setItem("jwtToken", data.token);
           });
+        navigate(from, { replace: true });
       })
       .catch((err) => console.log(err));
   };
