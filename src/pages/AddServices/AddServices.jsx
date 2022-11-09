@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Helmet } from "react-helmet";
 import toast from "react-hot-toast";
 import { FaDollarSign } from "react-icons/fa";
 
@@ -141,6 +142,9 @@ const AddServices = () => {
           </button>
         </form>
       </div>
+      <Helmet>
+        <title>Add a Service | Elizabeth Mcconnell | Plastic Surgeon</title>
+      </Helmet>
     </div>
   );
 };

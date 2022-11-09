@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Helmet } from "react-helmet";
 import toast from "react-hot-toast";
 import { FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -66,9 +67,9 @@ const Login = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
             localStorage.setItem("jwtToken", data.token);
           });
+        navigate(from, { replace: true });
       })
       .catch((err) => console.log(err));
   };
@@ -137,6 +138,9 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <Helmet>
+        <title>Login | Elizabeth Mcconnell | Plastic Surgeon</title>
+      </Helmet>
     </section>
   );
 };

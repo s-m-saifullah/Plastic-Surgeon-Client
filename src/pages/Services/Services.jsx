@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import { useLoaderData } from "react-router-dom";
 import ServiceCard from "../shared/ServiceCard";
 
@@ -14,6 +15,9 @@ const Services = () => {
           <ServiceCard key={service._id} service={service} />
         ))}
       </div>
+      <Helmet>
+        <title>Services | Elizabeth Mcconnell | Plastic Surgeon</title>
+      </Helmet>
     </div>
   );
 };

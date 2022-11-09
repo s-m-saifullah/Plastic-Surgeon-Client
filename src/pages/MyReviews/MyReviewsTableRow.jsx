@@ -23,7 +23,7 @@ const MyReviewsTableRow = ({ userReview, index }) => {
   };
 
   return (
-    <tr className="bg-gray-100 text-center border-b text-sm text-gray-600">
+    <tr className="bg-gray-100 text-center border-b text-base text-gray-600">
       <td className="p-2 border-r">{index + 1}</td>
       <td className="p-2 border-r">{serviceName}</td>
       <td className="p-2 border-r">{review}</td>
@@ -31,15 +31,14 @@ const MyReviewsTableRow = ({ userReview, index }) => {
       <td>
         <Link
           to={`/edit-review/${_id}`}
-          className="bg-blue-500 p-2 text-white hover:shadow-lg text-xs font-thin cursor-pointer"
+          className="bg-blue-500 h-8 w-12 rounded text-white hover:shadow-lg text-base cursor-pointer inline-flex items-center justify-center mr-3"
         >
           Edit
         </Link>
-        <input type="checkbox" id="my-modal-5" className="modal-toggle" />
 
         <button
           onClick={() => handleDelete(_id)}
-          className="bg-red-500 p-2 text-white hover:shadow-lg text-xs font-thin"
+          className="bg-red-500 h-8 w-20 rounded text-white hover:shadow-lg text-base inline-flex items-center justify-center"
         >
           Remove
         </button>

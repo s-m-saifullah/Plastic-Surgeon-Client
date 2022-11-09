@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Helmet } from "react-helmet";
 import toast from "react-hot-toast";
 import { FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -130,6 +131,9 @@ const SignUp = () => {
           </div>
         </div>
       </div>
+      <Helmet>
+        <title>Sign Up | Elizabeth Mcconnell | Plastic Surgeon</title>
+      </Helmet>
     </section>
   );
 };

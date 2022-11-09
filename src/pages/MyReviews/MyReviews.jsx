@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import { AuthContext } from "../../contexts/AuthProvider";
 import Spinner from "../shared/Spinner";
 import MyReviewsTableRow from "./MyReviewsTableRow";
@@ -66,6 +67,9 @@ const MyReviews = () => {
           </tbody>
         </table>
       </div>
+      <Helmet>
+        <title>My Reviews | Elizabeth Mcconnell | Plastic Surgeon</title>
+      </Helmet>
     </div>
   );
 };
