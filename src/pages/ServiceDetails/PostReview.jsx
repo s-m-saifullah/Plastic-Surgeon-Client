@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../contexts/AuthProvider";
 
-const PostReview = ({ id }) => {
+const PostReview = ({ id, serviceName }) => {
   const { user } = useContext(AuthContext);
 
   const handleReviewSubmit = (e) => {
@@ -24,6 +24,7 @@ const PostReview = ({ id }) => {
         }),
       },
       serviceId: id,
+      serviceName,
     };
 
     fetch("http://localhost:5000/review", {

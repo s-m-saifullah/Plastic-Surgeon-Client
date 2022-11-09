@@ -10,8 +10,9 @@ const DisplayReviews = ({ serviceId }) => {
       .then((data) => setReviews(data));
   }, []);
   console.log(reviews);
+
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-5 mt-10">
       {reviews.map((review) => (
         <ReviewCard key={review._id} serviceReview={review} />
       ))}

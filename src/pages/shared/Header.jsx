@@ -50,7 +50,7 @@ const Header = () => {
                     <Link to="/add-service">Add Service</Link>
                   </li>
                   <li tabIndex={0}>
-                    <Link>My Reviews</Link>
+                    <Link to="/my-reviews">My Reviews</Link>
                   </li>
                 </>
               )}
@@ -88,7 +88,7 @@ const Header = () => {
                   <Link to="/add-service">Add Service</Link>
                 </li>
                 <li tabIndex={0}>
-                  <Link>My Reviews</Link>
+                  <Link to="/my-reviews">My Reviews</Link>
                 </li>
               </>
             )}

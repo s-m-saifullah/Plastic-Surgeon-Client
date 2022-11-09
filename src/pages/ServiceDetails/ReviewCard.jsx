@@ -15,7 +15,7 @@ const ReviewCard = ({ serviceReview }) => {
         <h3 className="font-bold">{username}</h3>
         <p>{review}</p>
         <p>
-          <small>{time.fullTime}</small>
+          <small>{time.fullTime.replace(", 2022", "")}</small>
         </p>
       </div>
     </div>

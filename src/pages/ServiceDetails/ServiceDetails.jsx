@@ -9,7 +9,7 @@ const ServiceDetails = () => {
   return (
     <div>
       <ServiceDetailsCard service={service} />
-      <Reviews id={service._id} />
+      <Reviews id={service._id} serviceName={service.name} />
     </div>
   );
 };
