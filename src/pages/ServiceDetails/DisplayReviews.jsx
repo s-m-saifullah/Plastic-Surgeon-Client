@@ -9,7 +9,6 @@ const DisplayReviews = ({ serviceId }) => {
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, []);
-  console.log(reviews);
 
   return (
     <div className="flex flex-col gap-5 mt-10">

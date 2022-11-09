@@ -17,8 +17,26 @@ const Login = () => {
 
     // Login with credentials
     login(email, password)
-      .then(() => {
+      .then((result) => {
         toast.success("Log In Successful.");
+        const user = result.user;
+        const currentUser = {
+          uid: user.uid,
+        };
+
+        // Get JWT Token
+        fetch("http://localhost:5000/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(currentUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            localStorage.setItem("jwtToken", data.token);
+          });
       })
       .catch((err) => console.log(err));
   };
@@ -26,8 +44,26 @@ const Login = () => {
   //   Login with google
   const handleGoogleSignIn = () => {
     googleSignIn()
-      .then(() => {
+      .then((result) => {
         toast.success("Log In Successful.");
+        const user = result.user;
+        const currentUser = {
+          uid: user.uid,
+        };
+
+        // Get JWT Token
+        fetch("http://localhost:5000/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(currentUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            localStorage.setItem("jwtToken", data.token);
+          });
       })
       .catch((err) => console.log(err));
   };

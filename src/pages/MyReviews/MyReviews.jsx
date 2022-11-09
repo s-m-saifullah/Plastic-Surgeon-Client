@@ -4,11 +4,15 @@ import Spinner from "../shared/Spinner";
 import MyReviewsTableRow from "./MyReviewsTableRow";
 
 const MyReviews = () => {
-  const { user, loading } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/reviewByUid/${user?.uid}`)
+    fetch(`http://localhost:5000/reviewByUid/${user?.uid}`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, [user, reviews]);

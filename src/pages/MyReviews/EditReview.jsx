@@ -10,7 +10,6 @@ const EditReview = () => {
   const handleReviewUpdate = (e) => {
     e.preventDefault();
     const editedReview = { review: e.target.review.value };
-    console.log(editedReview);
     fetch(`http://localhost:5000/reviewById/${_id}`, {
       method: "PATCH",
       headers: {
@@ -21,7 +20,7 @@ const EditReview = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (modifiedCount > 1) {
+        if (data.modifiedCount > 0) {
           toast.success("Review Updated");
           navigate("/my-reviews");
         }
