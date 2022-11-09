@@ -44,7 +44,7 @@ const SignUp = () => {
   };
 
   return (
-    <section className="mt-10">
+    <section className="w-11/12 lg:w-10/12 mx-auto mt-10">
       <div className="container px-6 py-12 h-full">
         <div className="flex flex-col-reverse lg:flex-row justify-center items-center flex-wrap h-full gap-6 text-gray-800">
           <div className="md:w-8/12 lg:w-5/12 lg:mr-20 mb-12 md:mb-0">
