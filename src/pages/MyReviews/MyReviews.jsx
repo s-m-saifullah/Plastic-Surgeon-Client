@@ -7,13 +7,11 @@ const MyReviews = () => {
   const { user, loading } = useContext(AuthContext);
   const [reviews, setReviews] = useState([]);
 
-  console.log(user?.uid);
-
   useEffect(() => {
     fetch(`http://localhost:5000/reviewByUid/${user?.uid}`)
       .then((res) => res.json())
       .then((data) => setReviews(data));
-  }, [user]);
+  }, [user, reviews]);
 
   return (
     <div>
