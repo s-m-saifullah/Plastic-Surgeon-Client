@@ -1,5 +1,6 @@
 import React from "react";
 import toast from "react-hot-toast";
+import { FaEdit, FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const MyReviewsTableRow = ({ userReview, index }) => {
@@ -32,14 +33,14 @@ const MyReviewsTableRow = ({ userReview, index }) => {
           to={`/edit-review/${_id}`}
           className="bg-blue-500 h-8 w-12 rounded text-white hover:shadow-lg text-base cursor-pointer inline-flex items-center justify-center mr-3"
         >
-          Edit
+          <FaEdit />
         </Link>
 
         <button
           onClick={() => handleDelete(_id)}
-          className="bg-red-500 h-8 w-20 rounded text-white hover:shadow-lg text-base inline-flex items-center justify-center"
+          className="bg-red-500 h-8 w-12 rounded text-white hover:shadow-lg text-base inline-flex items-center justify-center"
         >
-          Remove
+          <FaTrash />
         </button>
       </td>
     </tr>
