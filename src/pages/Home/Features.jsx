@@ -4,9 +4,9 @@ import featureBg from "../../assets/images/features-bg.jpg";
 
 const Features = () => {
   return (
-    <div>
+    <div className="mb-12">
       <div
-        className="justify-start min-h-[500px] lg:pl-10 py-48"
+        className="justify-start min-h-[500px] lg:pl-10 py-20 md:py-32 lg:py-48"
         style={{ backgroundImage: `url("${featureBg}")` }}
       >
         <div className="w-11/12 md:w-10/12 mx-auto hero-overlay bg-transparent text-white ">

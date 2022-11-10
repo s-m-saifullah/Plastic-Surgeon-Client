@@ -1,5 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet";
+import Contact from "./Contact";
 import Features from "./Features";
 import Hero from "./Hero";
 import HomeServices from "./HomeServices";
@@ -13,6 +14,7 @@ const Home = () => {
       <Hero />
       <HomeServices />
       <Features />
+      <Contact />
     </div>
   );
 };
