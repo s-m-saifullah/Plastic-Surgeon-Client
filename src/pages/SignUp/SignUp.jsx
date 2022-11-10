@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Helmet } from "react-helmet";
 import toast from "react-hot-toast";
 import { FaGoogle } from "react-icons/fa";
@@ -8,6 +8,7 @@ import { AuthContext } from "../../contexts/AuthProvider";
 import Spinner from "../shared/Spinner";
 
 const SignUp = () => {
+  const [error, setError] = useState("");
   const {
     createUserWithEmail,
     profileUpdate,
@@ -25,6 +26,31 @@ const SignUp = () => {
     const photoUrl = form.photoUrl.value;
     const email = form.email.value;
     const password = form.password.value;
+
+    // Password length validation
+
+    if (password.length < 8) {
+      setError("Password must contain at least 8 characters");
+      return;
+    }
+
+    // Password uppercase validation
+    if (!/(?=.*?[A-Z])/.test(password)) {
+      setError("Password must contain at least one capital letter");
+      return;
+    }
+
+    // Password number validation
+    if (!/(?=.*[0-9])/.test(password)) {
+      setError("Password must contain at least one number");
+      return;
+    }
+
+    // Password special character validation
+    if (!/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/.test(password)) {
+      setError("Password must contain at least one special character");
+      return;
+    }
 
     // Sign up with email password
     createUserWithEmail(email, password)
@@ -85,7 +111,6 @@ const SignUp = () => {
                     name="photoUrl"
                     className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                     placeholder="Photo URL"
-                    required
                   />
                 </div>
 
@@ -110,6 +135,9 @@ const SignUp = () => {
                     required
                   />
                 </div>
+
+                {/* Show Error */}
+                {error && <p className="mb-6 text-red-600">{error}</p>}
 
                 <div className="flex justify-end items-center mb-6">
                   <Link

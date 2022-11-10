@@ -3,9 +3,14 @@ import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/images/Elizabeth Mcconnell.png";
 import { AuthContext } from "../../contexts/AuthProvider";
+import imgPlaceholder from "../../assets/images/placeholder.jpg";
 
 const Header = () => {
   const { user, logout } = useContext(AuthContext);
+
+  const onImgError = (e) => {
+    e.target.src = imgPlaceholder;
+  };
 
   const handleLogout = () => {
     logout()
@@ -109,7 +114,10 @@ const Header = () => {
               <div className="dropdown dropdown-end">
                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                   <div className="w-10 rounded-full">
-                    <img src={user?.photoURL} />
+                    <img
+                      src={user?.photoURL ? user.photoURL : imgPlaceholder}
+                      onError={onImgError}
+                    />
                   </div>
                 </label>
                 <ul
