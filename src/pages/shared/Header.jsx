@@ -57,7 +57,7 @@ const Header = () => {
               <li>
                 <Link>Blog</Link>
               </li>
-              {user?.uid || (
+              {!user?.uid && (
                 <>
                   <li>
                     <Link to="/login" className="">
