@@ -16,6 +16,9 @@ const ServiceCard = ({ service }) => {
       </figure>
       <div className="card-body gap-4">
         <h2 className="card-title">{name}</h2>
+        <p className="font-semibold">
+          Price: <span className="text-xl">${price}</span>
+        </p>
         <p>
           {description.length > 100
             ? description.slice(0, 100) + "..."
