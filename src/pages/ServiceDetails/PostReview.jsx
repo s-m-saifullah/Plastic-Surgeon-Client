@@ -1,8 +1,9 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import toast from "react-hot-toast";
+import { Navigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 
-const PostReview = ({ id, serviceName }) => {
+const PostReview = ({ id, serviceName, count, setCount }) => {
   const { user } = useContext(AuthContext);
 
   const handleReviewSubmit = (e) => {
@@ -39,10 +40,13 @@ const PostReview = ({ id, serviceName }) => {
         console.log(data);
         if (data.acknowledged) {
           toast.success("Review Added");
+          setCount(count++);
+          console.log(count);
         }
         form.reset();
       });
   };
+
   return (
     <div>
       <form onSubmit={handleReviewSubmit}>
