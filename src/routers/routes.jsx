@@ -9,6 +9,7 @@ import SignUp from "../pages/SignUp/SignUp";
 import MyReviews from "../pages/MyReviews/MyReviews";
 import EditReview from "../pages/MyReviews/EditReview";
 import PrivateRoute from "./PrivateRouter";
+import Blog from "../pages/Blog/Blog";
 
 const router = createBrowserRouter([
   {
@@ -68,6 +69,10 @@ const router = createBrowserRouter([
           fetch(
             `https://plastic-surgeon-server.vercel.app/reviewById/${params.id}`
           ),
+      },
+      {
+        path: "/blog",
+        element: <Blog />,
       },
     ],
   },
