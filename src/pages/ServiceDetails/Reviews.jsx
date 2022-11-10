@@ -1,13 +1,11 @@
 import React, { useContext, useState } from "react";
-import toast from "react-hot-toast";
-import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 import DisplayReviews from "./DisplayReviews";
 import PostReview from "./PostReview";
 
 const Reviews = ({ id, serviceName }) => {
   const { user } = useContext(AuthContext);
-  const [count, setCount] = useState(0);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -22,12 +20,7 @@ const Reviews = ({ id, serviceName }) => {
     >
       <h2 className="text-center text-3xl font-semibold mb-5">Review</h2>
       {user?.uid ? (
-        <PostReview
-          id={id}
-          serviceName={serviceName}
-          count={count}
-          setCount={setCount}
-        />
+        <PostReview id={id} serviceName={serviceName} />
       ) : (
         <h2 className="text-center text-3xl">
           Please{" "}
@@ -40,7 +33,7 @@ const Reviews = ({ id, serviceName }) => {
           to share your review
         </h2>
       )}
-      <DisplayReviews serviceId={id} count={count} />
+      <DisplayReviews serviceId={id} />
     </div>
   );
 };

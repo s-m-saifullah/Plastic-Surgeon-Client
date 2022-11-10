@@ -8,9 +8,9 @@ const Hero = () => {
         className="hero justify-start min-h-[500px] lg:pl-10"
         style={{ backgroundImage: `url("${heroBg}")` }}
       >
-        <div className="hero-overlay bg-opacity-0"></div>
+        <div className="hero-overlay bg-opacity-0 "></div>
         <div className="hero-content text-neutral-content">
-          <div className="max-w-2xl">
+          <div className="lg:ml-40 max-w-2xl">
             <h1 className="mb-5 text-5xl font-bold">
               I Love Inspiring Confidence In My Patients
             </h1>

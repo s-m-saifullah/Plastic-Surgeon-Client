@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import { FaAngleDown } from "react-icons/fa";
 
 const Blog = () => {
@@ -172,6 +173,9 @@ const Blog = () => {
           </p>
         </div>
       </div>
+      <Helmet>
+        <title>Blog | Elizabeth Mcconnell | Plastic Surgeon</title>
+      </Helmet>
     </div>
   );
 };

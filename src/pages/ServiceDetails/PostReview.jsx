@@ -37,11 +37,8 @@ const PostReview = ({ id, serviceName, count, setCount }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.acknowledged) {
           toast.success("Review Added");
-          setCount(count++);
-          console.log(count);
         }
         form.reset();
       });

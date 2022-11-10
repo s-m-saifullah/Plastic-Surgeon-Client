@@ -7,7 +7,7 @@ const Contact = () => {
   return (
     <div>
       <div
-        className="min-h-[500px] lg:pl-10 py-20 md:py-32 lg:py-12 bg-right"
+        className="min-h-[500px] lg:pl-10 py-12 bg-right"
         style={{ backgroundImage: `url("${ContactBg}")` }}
       >
         <div className="w-11/12 md:w-10/12 mx-auto hero-overlay bg-transparent text-white flex flex-col items-end">
@@ -20,7 +20,7 @@ const Contact = () => {
                 <p>I'm a New Patient and/or have a General Question</p>
               </div>
               <div>
-                <Link class="btn btn-primary capitalize">Contact Us</Link>
+                <Link className="btn btn-primary capitalize">Contact Us</Link>
               </div>
             </div>
 
@@ -31,7 +31,7 @@ const Contact = () => {
                 <p>I'm a New Patient and/or have a General Question</p>
               </div>
               <div>
-                <Link class="btn btn-primary capitalize">Contact Us</Link>
+                <Link className="btn btn-primary capitalize">Contact Us</Link>
               </div>
             </div>
 
@@ -42,7 +42,7 @@ const Contact = () => {
                 <p>I'm a New Patient and/or have a General Question</p>
               </div>
               <div>
-                <Link class="btn btn-primary capitalize">Contact Us</Link>
+                <Link className="btn btn-primary capitalize">Contact Us</Link>
               </div>
             </div>
 
