@@ -20,7 +20,6 @@ const Header = () => {
       .catch((err) => console.log(err));
   };
 
-  console.log(user);
   return (
     <div>
       <div className="navbar bg-base-100 my-5 w-11/12 lg:w-10/12 mx-auto">
