@@ -30,7 +30,7 @@ const EditReview = () => {
   return (
     <form
       onSubmit={handleReviewUpdate}
-      className="w-11/12 lg:w-10/12 mx-auto px-80 mb-10"
+      className="w-11/12 lg:w-3/4 mx-auto md:px-40 lg:px-64 mb-10"
     >
       <div>
         <textarea
