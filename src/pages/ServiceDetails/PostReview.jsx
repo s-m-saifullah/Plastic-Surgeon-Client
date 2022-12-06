@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import { Navigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 
-const PostReview = ({ id, serviceName, count, setCount }) => {
+const PostReview = ({ id, serviceName, refetch }) => {
   const { user } = useContext(AuthContext);
 
   const handleReviewSubmit = (e) => {
@@ -41,6 +41,7 @@ const PostReview = ({ id, serviceName, count, setCount }) => {
           toast.success("Review Added");
         }
         form.reset();
+        refetch();
       });
   };
 
