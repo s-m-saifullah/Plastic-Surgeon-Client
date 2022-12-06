@@ -1,37 +1,62 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { AuthContext } from "../../contexts/AuthProvider";
+import { useQuery } from "@tanstack/react-query";
 import Spinner from "../shared/Spinner";
 import MyReviewsTableRow from "./MyReviewsTableRow";
 
 const MyReviews = () => {
   const { user, logout, loading, setLoading } = useContext(AuthContext);
   const [reviewLoading, setReviewLoading] = useState(true);
-  const [reviews, setReviews] = useState([]);
+  // const [reviews, setReviews] = useState([]);
 
-  useEffect(() => {
-    if (user) {
-      fetch(
-        `https://plastic-surgeon-server.vercel.app/reviewByUid/${user?.uid}`,
-        {
-          headers: {
-            authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
-          },
-        }
-      )
-        .then((res) => {
-          if (res.status === 401 || res.status === 403) {
-            logout();
+  const { data: reviews = [], refetch } = useQuery({
+    queryKey: ["reviews"],
+    queryFn: async () => {
+      if (user) {
+        const res = await fetch(
+          `https://plastic-surgeon-server.vercel.app/reviewByUid/${user?.uid}`,
+          {
+            headers: {
+              authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
+            },
           }
-          return res.json();
-        })
-        .then((data) => {
-          setReviews(data);
-          setLoading(false);
-          setReviewLoading(false);
-        });
-    }
-  }, [user, reviews]);
+        );
+        if (res.status === 401 || res.status === 403) {
+          logout();
+        }
+        const data = await res.json();
+
+        setLoading(false);
+        setReviewLoading(false);
+        return data;
+      }
+    },
+  });
+
+  // useEffect(() => {
+  //   if (user) {
+  //     fetch(
+  //       `https://plastic-surgeon-server.vercel.app/reviewByUid/${user?.uid}`,
+  //       {
+  //         headers: {
+  //           authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
+  //         },
+  //       }
+  //     )
+  //       .then((res) => {
+  //         if (res.status === 401 || res.status === 403) {
+  //           logout();
+  //         }
+  //         return res.json();
+  //       })
+  //       .then((data) => {
+  //         setReviews(data);
+  //         setLoading(false);
+  //         setReviewLoading(false);
+  //       });
+  //   }
+  // }, [user, reviews]);
 
   return (
     <div className="min-h-[65vh] w-11/12 lg:w-10/12 mx-auto mb-10">
@@ -80,6 +105,7 @@ const MyReviews = () => {
                       key={review._id}
                       index={index}
                       userReview={review}
+                      refetch={refetch}
                     />
                   ))}
                 </tbody>

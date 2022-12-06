@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tanstack/react-query": "^4.19.1",
     "daisyui": "^2.38.1",
     "firebase": "^9.13.0",
     "react": "^18.2.0",

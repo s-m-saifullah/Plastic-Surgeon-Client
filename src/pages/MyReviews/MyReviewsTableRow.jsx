@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const MyReviewsTableRow = ({ userReview, index }) => {
+const MyReviewsTableRow = ({ userReview, index, refetch }) => {
   const { _id, serviceName, review } = userReview;
 
   const handleDelete = (id) => {
@@ -17,6 +17,7 @@ const MyReviewsTableRow = ({ userReview, index }) => {
         .then((data) => {
           if (data.deletedCount > 0) {
             toast.success("Review Deleted");
+            refetch();
           }
         });
     }
