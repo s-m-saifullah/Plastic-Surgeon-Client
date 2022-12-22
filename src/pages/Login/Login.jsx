@@ -6,9 +6,11 @@ import { FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import loginImg from "../../assets/images/login.jpg";
 import { AuthContext } from "../../contexts/AuthProvider";
+import { useState } from "react";
 
 const Login = () => {
   const { login, googleSignIn, loading, setLoading } = useContext(AuthContext);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
@@ -44,7 +46,11 @@ const Login = () => {
           });
         navigate(from, { replace: true });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
+        setError(err.message);
+      });
   };
 
   //   Login with google
@@ -74,6 +80,7 @@ const Login = () => {
       .catch((err) => {
         console.log(err);
         if (err) {
+          setError(err.message);
           setLoading(false);
         }
       });
@@ -121,6 +128,9 @@ const Login = () => {
                     Don't Have an Account? Sign Up.
                   </Link>
                 </div>
+
+                {/* Show Error */}
+                {error ? <p className="mb-6 text-error">{error}</p> : undefined}
 
                 {/* <!-- Submit button --> */}
                 <button
